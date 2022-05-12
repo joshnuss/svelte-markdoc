@@ -2,7 +2,7 @@ import { assert, expect, test } from 'vitest'
 import preprocess from '../index.js'
 
 test('processes .markdoc file', () => {
-  const handler = preprocess({})
+  const handler = preprocess()
   const {code} = handler({
     filename: 'example.markdoc',
     content: '# Hello World'
@@ -59,4 +59,12 @@ title: Best docs
   expect(code).eq('<article><h1>Best docs in 2022</h1></article>')
 })
 
-test("doesn't touch non-markdoc files")
+test("doesn't touch non-markdoc files", () => {
+  const handler = preprocess()
+  const output = handler({
+    filename: 'mc-hammer.svelte',
+    content: "can't touch this"
+  })
+
+  expect(output).toBeUndefined()
+})
