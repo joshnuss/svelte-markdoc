@@ -1,11 +1,11 @@
 svelte-markdoc
 -----------------
 
-A [Markdoc](https://markdoc.io) preprocessor for [svelte](https://svelte.dev). Supports [svelte-kit](https://kit.svelte.dev).
+A [Markdoc](https://markdoc.io) preprocessor for [svelte](https://svelte.dev). Supports [SvelteKit](https://kit.svelte.dev).
 
 ## Setup
 
-Create a [svelte-kit](https://kit.svelte.dev) project:
+Create a [SvelteKit](https://kit.svelte.dev) project:
 
 ```bash
 mkdir my-markdoc-project
