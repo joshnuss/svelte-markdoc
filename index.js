@@ -27,7 +27,8 @@ function render(source, config) {
 }
 
 function mergeVariables(config, frontmatter) {
-  const variables = {...(config.variables || {}), ...frontmatter}
+  const existing = config.variables || {}
+  const variables = {...existing, ...frontmatter}
 
   return {...config, variables}
 }
