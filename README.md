@@ -1,7 +1,7 @@
 svelte-markdoc
 -----------------
 
-A [Markdoc](https://markdoc.io) preprocessor for [svelte](https://svelte.dev). Supports [SvelteKit](https://kit.svelte.dev).
+A [Markdoc](https://markdoc.io) preprocessor for [Svelte](https://svelte.dev). Supports [SvelteKit](https://kit.svelte.dev).
 
 ## Setup
 
