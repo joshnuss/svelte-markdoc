@@ -1,0 +1,21 @@
+{
+  "name": "svelte-markdoc",
+  "version": "0.0.1",
+  "description": "Markdoc preprocessor for Svelte",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "author": "Joshua Nussbaum",
+  "homepage": "https://github.com/joshnuss/svelte-markdoc",
+  "license": "MIT",
+  "dependencies": {
+    "@markdoc/markdoc": "^0.1.1",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "vitest": "^0.12.4"
+  }
+}
