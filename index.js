@@ -4,7 +4,7 @@ import yaml from 'js-yaml'
 function mergeVariables(config, frontmatter) {
   const variables = {...(config.variables || {}), ...frontmatter}
 
-	return {...config, variables}
+  return {...config, variables}
 }
 
 export default function preprocessMarkdoc(config={}) {
