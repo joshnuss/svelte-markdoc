@@ -7,7 +7,7 @@ function mergeVariables(config, frontmatter) {
 	return {...config, variables}
 }
 
-export default function preprocessMarkdoc(config) {
+export default function preprocessMarkdoc(config={}) {
   return (input) => {
     const fileType = /\.markdoc$/
 
