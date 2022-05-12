@@ -1,9 +1,9 @@
 import { assert, expect, test } from 'vitest'
-import preprocess from '../index.js'
+import preprocessor from '../index.js'
 
 test('processes .markdoc file', () => {
-  const handler = preprocess()
-  const {code} = handler({
+  const process = preprocessor()
+  const {code} = process({
     filename: 'example.markdoc',
     content: '# Hello World'
   })
@@ -12,12 +12,12 @@ test('processes .markdoc file', () => {
 })
 
 test('includes config', () => {
-  const handler = preprocess({
+  const process = preprocessor({
     variables: {
       title: "Hello World!"
     }
   })
-  const {code} = handler({
+  const {code} = process({
     filename: 'example.markdoc',
     content: '# {% $title %}'
   })
@@ -26,42 +26,40 @@ test('includes config', () => {
 })
 
 test('includes frontmatter in variables', () => {
-  const handler = preprocess({})
-  const {code} = handler({
+  const process = preprocessor({})
+  const {code} = process({
     filename: 'example.markdoc',
     content: `---
 title: Hello World!
 ---
 
-# {% $title %}
-    `
+# {% $title %}`
   })
 
   expect(code).eq('<article><h1>Hello World!</h1></article>')
 })
 
 test('merges existing variables with frontmatter', () => {
-  const handler = preprocess({
+  const process = preprocessor({
     variables: {
       currentYear: "2022"
     }
   })
-  const {code} = handler({
+  const {code} = process({
     filename: 'example.markdoc',
     content: `---
 title: Best docs
 ---
 
-# {% $title %} in {% $currentYear %}
-    `
+# {% $title %} in {% $currentYear %}`
   })
 
   expect(code).eq('<article><h1>Best docs in 2022</h1></article>')
 })
 
 test("doesn't touch non-markdoc files", () => {
-  const handler = preprocess()
-  const output = handler({
+  const process = preprocessor()
+  const output = process({
     filename: 'mc-hammer.svelte',
     content: "can't touch this"
   })
