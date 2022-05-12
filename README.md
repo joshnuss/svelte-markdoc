@@ -5,7 +5,7 @@ A [Markdoc](https://markdoc.io) preprocessor for [svelte](https://svelte.dev). S
 
 ## Setup
 
-Create a svelte-kit project:
+Create a [svelte-kit](https://kit.svelte.dev) project:
 
 ```bash
 mkdir my-markdoc-project
@@ -20,10 +20,9 @@ Install the `svelte-markdoc` package:
 pnpm install -D svelte-markdoc
 ```
 
-Create a `markdoc.config.js` in the root folder:
+Create a `markdoc.config.js` in the root folder to keep all your markdoc config:
 
 ```javascript
-// keep all your markdoc config here. functions, variables, tags
 export default {
   variables: {
     title: 'My awesome site'
@@ -38,16 +37,16 @@ import preprocessMarkdoc from 'svelte-markdoc'
 import markdocConfig from './markdoc.config.js'
 
 const config = {
-	extensions: ['.svelte', '.markdoc'],
-	preprocess: {
-		markup: preprocessMarkdoc(markdocConfig)
-	},
-	kit: {
+  extensions: ['.svelte', '.markdoc'],
+  preprocess: {
+    markup: preprocessMarkdoc(markdocConfig)
+  },
+  kit: {
     // ...
-	}
-};
+  }
+}
 
-export default config;
+export default config
 ```
 
 Now you can create pages with the `.markdoc` extension in `src/routes`:
@@ -58,6 +57,8 @@ title: Hello from Markdoc
 ---
 
 # {% $title %}
+
+This is *super* cool.
 ```
 
 ## FAQ
