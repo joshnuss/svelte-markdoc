@@ -33,7 +33,7 @@ test('includes frontmatter in variables', () => {
 title: Hello World!
 ---
 
-# {% $title %}`
+# {% $markdoc.frontmatter.title %}`
   })
 
   expect(code).eq('<article><h1>Hello World!</h1></article>')
@@ -51,7 +51,7 @@ test('merges existing variables with frontmatter', () => {
 title: Best docs
 ---
 
-# {% $title %} in {% $currentYear %}`
+# {% $markdoc.frontmatter.title %} in {% $currentYear %}`
   })
 
   expect(code).eq('<article><h1>Best docs in 2022</h1></article>')
@@ -65,4 +65,18 @@ test("doesn't touch non-markdoc files", () => {
   })
 
   expect(output).toBeUndefined()
+})
+
+test("parses frontmatter", () => {
+  const process = preprocessor();
+  const {code} = process({
+    filename: 'example.markdoc',
+    content: `---
+title: What is Markdoc?
+---
+
+# {% $markdoc.frontmatter.title %} {% #overview %}`
+  })
+
+  expect(code).eq('<article><h1 id="overview">What is Markdoc? </h1></article>')
 })

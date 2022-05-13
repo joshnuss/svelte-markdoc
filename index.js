@@ -17,18 +17,14 @@ function isMarkdoc(path) {
 
 function render(source, config) {
   const ast = markdoc.parse(source)
-  const frontmatter = ast.attributes.frontmatter
-    ? yaml.load(ast.attributes.frontmatter)
-    : {};
-  const pageConfig = mergeVariables(config, frontmatter)
-  const content = markdoc.transform(ast, pageConfig)
-
+  const configWithFrontmatter = addFrontmatter(ast, config)
+  const content = markdoc.transform(ast, configWithFrontmatter)
   return markdoc.renderers.html(content)
 }
 
-function mergeVariables(config, frontmatter) {
-  const existing = config.variables || {}
-  const variables = {...existing, ...frontmatter}
-
-  return {...config, variables}
+function addFrontmatter(ast, config) {
+  const frontmatter = ast.attributes.frontmatter ? yaml.load(ast.attributes.frontmatter) : {}
+  const markdoc = Object.assign(config?.variables?.markdoc || {}, { frontmatter })
+  const variables = Object.assign(config?.variables || {}, { markdoc })
+	return Object.assign(config, { variables })
 }
