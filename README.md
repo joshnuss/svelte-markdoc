@@ -56,7 +56,7 @@ Now you can create pages with the `.markdoc` extension in `src/routes`:
 title: Hello from Markdoc
 ---
 
-# {% $title %}
+# {% $markdoc.frontmatter.title %}
 
 This is *super* cool.
 ```
