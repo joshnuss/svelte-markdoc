@@ -1,8 +1,8 @@
 import { assert, expect, test } from 'vitest'
-import preprocessor from '../index.js'
+import preprocessMarkdoc from '../src/lib/preprocess.js'
 
 test('processes .markdoc file', () => {
-  const process = preprocessor()
+  const process = preprocessMarkdoc()
   const {code} = process({
     filename: 'example.markdoc',
     content: '# Hello World'
@@ -12,7 +12,7 @@ test('processes .markdoc file', () => {
 })
 
 test('includes config', () => {
-  const process = preprocessor({
+  const process = preprocessMarkdoc({
     variables: {
       title: "Hello World!"
     }
@@ -26,7 +26,7 @@ test('includes config', () => {
 })
 
 test('includes frontmatter in variables', () => {
-  const process = preprocessor({})
+  const process = preprocessMarkdoc({})
   const {code} = process({
     filename: 'example.markdoc',
     content: `---
@@ -40,7 +40,7 @@ title: Hello World!
 })
 
 test('merges existing variables with frontmatter', () => {
-  const process = preprocessor({
+  const process = preprocessMarkdoc({
     variables: {
       currentYear: "2022"
     }
@@ -58,7 +58,7 @@ title: Best docs
 })
 
 test("doesn't touch non-markdoc files", () => {
-  const process = preprocessor()
+  const process = preprocessMarkdoc()
   const output = process({
     filename: 'mc-hammer.svelte',
     content: "can't touch this"
@@ -68,7 +68,7 @@ test("doesn't touch non-markdoc files", () => {
 })
 
 test("parses frontmatter", () => {
-  const process = preprocessor();
+  const process = preprocessMarkdoc();
   const {code} = process({
     filename: 'example.markdoc',
     content: `---

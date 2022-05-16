@@ -1,5 +1,5 @@
 import markdoc from '@markdoc/markdoc'
-import yaml from 'js-yaml'
+import { addFrontmatter } from './utils.js'
 
 export default function preprocessMarkdoc(config={}) {
   return (input) => {
@@ -20,11 +20,4 @@ function render(source, config) {
   const configWithFrontmatter = addFrontmatter(ast, config)
   const content = markdoc.transform(ast, configWithFrontmatter)
   return markdoc.renderers.html(content)
-}
-
-function addFrontmatter(ast, config) {
-  const frontmatter = ast.attributes.frontmatter ? yaml.load(ast.attributes.frontmatter) : {}
-  const markdoc = { ...(config?.variables?.markdoc || {}), frontmatter }
-  const variables = { ...(config?.variables || {}), markdoc }
-  return {...config, variables };
 }
