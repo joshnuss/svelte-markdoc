@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint": "prettier --ignore-path .prettierignore --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
+    "format": "prettier --ignore-path .prettierignore --write --plugin-search-dir=. ."
   },
   "author": "Joshua Nussbaum",
   "homepage": "https://github.com/joshnuss/svelte-markdoc",
@@ -16,6 +18,11 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^3.4.1",
+    "prettier": "~2.6.0",
+    "prettier-plugin-svelte": "^2.6.0",
     "vitest": "^0.12.4"
   }
 }
