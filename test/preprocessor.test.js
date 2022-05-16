@@ -3,7 +3,7 @@ import preprocessor from '../index.js'
 
 test('processes .markdoc file', () => {
   const process = preprocessor()
-  const {code} = process({
+  const { code } = process({
     filename: 'example.markdoc',
     content: '# Hello World'
   })
@@ -14,10 +14,10 @@ test('processes .markdoc file', () => {
 test('includes config', () => {
   const process = preprocessor({
     variables: {
-      title: "Hello World!"
+      title: 'Hello World!'
     }
   })
-  const {code} = process({
+  const { code } = process({
     filename: 'example.markdoc',
     content: '# {% $title %}'
   })
@@ -27,7 +27,7 @@ test('includes config', () => {
 
 test('includes frontmatter in variables', () => {
   const process = preprocessor({})
-  const {code} = process({
+  const { code } = process({
     filename: 'example.markdoc',
     content: `---
 title: Hello World!
@@ -42,10 +42,10 @@ title: Hello World!
 test('merges existing variables with frontmatter', () => {
   const process = preprocessor({
     variables: {
-      currentYear: "2022"
+      currentYear: '2022'
     }
   })
-  const {code} = process({
+  const { code } = process({
     filename: 'example.markdoc',
     content: `---
 title: Best docs
@@ -67,9 +67,9 @@ test("doesn't touch non-markdoc files", () => {
   expect(output).toBeUndefined()
 })
 
-test("parses frontmatter", () => {
-  const process = preprocessor();
-  const {code} = process({
+test('parses frontmatter', () => {
+  const process = preprocessor()
+  const { code } = process({
     filename: 'example.markdoc',
     content: `---
 title: What is Markdoc?

@@ -1,7 +1,7 @@
 import markdoc from '@markdoc/markdoc'
 import yaml from 'js-yaml'
 
-export default function preprocessMarkdoc(config={}) {
+export default function preprocessMarkdoc(config = {}) {
   return (input) => {
     if (isMarkdoc(input.filename)) {
       return {
@@ -26,5 +26,5 @@ function addFrontmatter(ast, config) {
   const frontmatter = ast.attributes.frontmatter ? yaml.load(ast.attributes.frontmatter) : {}
   const markdoc = { ...(config?.variables?.markdoc || {}), frontmatter }
   const variables = { ...(config?.variables || {}), markdoc }
-  return {...config, variables };
+  return { ...config, variables }
 }
