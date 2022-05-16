@@ -2,11 +2,11 @@
   "name": "svelte-markdoc",
   "version": "0.0.1",
   "description": "Markdoc preprocessor for Svelte",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "package": "svelte-kit package"
   },
   "author": "Joshua Nussbaum",
   "homepage": "https://github.com/joshnuss/svelte-markdoc",
@@ -16,6 +16,9 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@sveltejs/adapter-auto": "1.0.0-next.40",
+    "@sveltejs/kit": "1.0.0-next.328",
+    "svelte": "^3.48.0",
     "vitest": "^0.12.4"
   }
 }
