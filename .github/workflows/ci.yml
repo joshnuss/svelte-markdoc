@@ -1,23 +1,26 @@
 name: CI
 on: [push, pull_request]
+
 jobs:
   Tests:
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
     strategy:
       matrix:
-        node-version: [14, 16]
         os: [ubuntu-latest, windows-latest, macOS-latest]
+        node-version: [14.x, 16.x]
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
-      - run: npm install
-      - run: npm test
-        env:
-          CI: true
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install pnpm
+      run: npm add -g pnpm
+    - name: pnpm install and test
+      run: |
+        pnpm install
+        pnpm test
+
   Lint:
     runs-on: ubuntu-latest
     timeout-minutes: 5
