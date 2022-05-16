@@ -1,4 +1,4 @@
-import { assert, expect, test } from 'vitest'
+import { expect, test } from 'vitest'
 import preprocessor from '../index.js'
 
 test('processes .markdoc file', () => {
