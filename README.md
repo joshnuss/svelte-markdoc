@@ -20,7 +20,7 @@ Install the `svelte-markdoc` package:
 pnpm install -D svelte-markdoc
 ```
 
-Create a `markdoc.config.js` in the root folder to keep all your markdoc config:
+Create a `markdoc.config.js` in the root folder to hold your markdoc config:
 
 ```javascript
 export default {
@@ -30,7 +30,7 @@ export default {
 }
 ```
 
-Configure the preprocessor in `svelte.config.js`:
+Then, configure the preprocessor in `svelte.config.js`:
 
 ```javascript
 import preprocessMarkdoc from 'svelte-markdoc'
