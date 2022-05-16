@@ -29,4 +29,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           cache: npm
-      - run: 'npm i && npm run lint'
+      - name: Install pnpm
+        run: npm add -g pnpm
+      - name: pnpm lint
+        run: |
+          pnpm install
+          pnpm lint
