@@ -7,9 +7,9 @@
   import Tags from "./Tags.svelte"
   import { addFrontmatter } from "../utils.js"
 
-  const ast = Markdoc.parse(doc)
-  const configWithFrontmatter = addFrontmatter(ast, config)
-  const content = Markdoc.transform(ast, configWithFrontmatter)
+  $: ast = Markdoc.parse(doc)
+  $: configWithFrontmatter = addFrontmatter(ast, config)
+  $: content = Markdoc.transform(ast, configWithFrontmatter)
 </script>
 
 <Tags children={content.children} {components}></Tags>
