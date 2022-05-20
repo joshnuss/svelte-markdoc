@@ -10,6 +10,7 @@
   $: ast = Markdoc.parse(doc)
   $: configWithFrontmatter = addFrontmatter(ast, config)
   $: content = Markdoc.transform(ast, configWithFrontmatter)
+  $: children = (content && typeof content != "string" && content.children) || []
 </script>
 
-<Tags children={content.children} {components}></Tags>
+<Tags {children} {components}></Tags>
