@@ -5,6 +5,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
     package: {
+      files: path => !path.match(/site/),
       exports: path => path.match(/package.json$|index.js$|preprocess.js$/),
       emitTypes: false // todo
     }
